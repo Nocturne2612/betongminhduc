@@ -1,0 +1,78 @@
+.loading{
+    position:fixed;
+    width:100%;
+    height:100%;
+    z-index:9999;
+    display:block;
+    background:rgba(0,0,0,0.7);
+    top:0;
+    left:0;
+}
+.loading-inner{
+    background-image: url('../images/loading-image.gif');
+    position:fixed;
+    top:50%;
+    left:50%;
+    text-align:center;
+    margin-left:-25px;
+    margin-top:-40px;
+    width: 48px;
+    height: 48px;
+}
+.modal-header {
+    border-bottom: 1px solid #f4f4f4;
+}
+.modal-footer {
+    border-top: 1px solid #f4f4f4;
+}
+.modal-footer .btn{
+    margin:0px;
+}
+
+#add-images-product input[type=checkbox], input[type=radio] {
+    margin: 10px 0 0;
+    line-height: normal;
+}
+#add-images-product .upload-msg {
+    text-align: center;
+    padding: 25px;
+    font-size: 22px;
+    color: #aaa;
+    width: 250px;
+    height: 250px;
+    margin: 0px auto;
+    border: 1px solid #aaa;
+}
+#add-images-product.ready .upload-msg , #add-images-product .upload-demo-wrap{
+    display: none;
+}
+#add-images-product.ready .upload-demo-wrap {
+    display: block;
+}
+#add-images-product .file-btn{
+    position: relative;
+}
+
+#add-images-product .file-btn input[type="file"] {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    left: 0;
+}
+#add-images-product .actions {
+    text-align: center;
+    padding: 10px;
+}
+
+#add-images-product .upload-certificate{
+    width: 100%;
+    min-height: 250px;
+    margin: 0px auto;
+}
+
+#add-images-product .upload-certificate img{
+    display: inline;
+    width: 100%;
+}

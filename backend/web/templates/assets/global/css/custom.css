@@ -1,0 +1,222 @@
+.p-0 {padding: 0px}
+.fillter {background: #ffffff}
+.fillter .md6 .input-group { width:16.1%; margin-bottom:4px; margin-top:4px}
+.form-inline .input-group {margin-right: 5px;}
+.fillter .input-group .form-control {background-color: #ffffff!important;border-color: #9c9c9c !important; width: 100%}
+.fillter .input-group .select2-container .select2-choice {background-color: #fff !important;}
+.fillter label {margin-bottom: 3px; font-weight: normal;}
+.fillter .searchbtn {display: inline-table;}
+.fillter .searchbtn button, .fillter .searchbtn a {margin-top: 21px; margin-right: 9px; margin-bottom: 0px!important;}
+.prepend-icon i {z-index: 0}
+@media screen and (max-width: 768px) {
+  .fillter .md6 .input-group { width: 30.2%; display: inline-table;}
+}
+@font-face {
+  font-family: 'Lato' !important;
+  src: url('../fonts/lato/Lato-Black.ttf') !important;
+  font-weight: normal !important;
+  font-style: normal !important;
+}
+.pos-relative{
+  position: relative;
+}
+.media-upload{
+  position: absolute;
+  bottom: 0;
+  left: 100px;
+}
+.media-upload button{
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+.media-upload button i{
+  padding-right: 0 !important
+}
+
+.media-uploads{
+  position: absolute;
+  bottom: 0;
+  right: 0px;
+}
+.media-uploads button{
+    border-radius: 50%;
+    border: 1px solid #ccc;
+}
+.media-uploads button i{
+  padding-right: 0 !important
+}
+
+.bottom--23{
+  bottom: -23px !important;
+} 
+.m-b-20{
+  margin-bottom: 20px !important;
+}
+.input-group .form-control{
+	z-index: 0 !important;
+}
+.p-r-130{
+	padding-right: 130px;
+}
+.code-capcha{
+	position: relative;
+}
+.capcha{
+	position: absolute;
+	width: 120px;
+	height: 32px;
+	top: 1px;
+	right: 20px;
+}
+.capcha img{
+	width: 120px;
+	height: 32px;
+}
+.well { border:none;  -webkit-box-shadow:  0 0px 2px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  -moz-box-shadow:  0 0px 2px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12);
+  box-shadow: 0 0px 2px 0 rgba(0,0,0,.2),0 1px 1px 0 rgba(0,0,0,.14),0 2px 1px -1px rgba(0,0,0,.12); padding: 5px 15px 10px; border-radius: 3px}
+
+@media (max-width: 480px) {
+  .fillter .md5 .input-group {width:98%; float: left;}
+  .fillter .md6 .input-group {width:98%; float: left;}
+  .fillter .md7 .input-group {width:98%; float: left;}
+}
+@media (min-width: 481px) and (max-width: 991px) { 
+  .fillter .md5 .input-group {width:48%; float: left;} 
+  .fillter .md6 .input-group {width:48%; float: left;} 
+  .fillter .md7 .input-group {width:48%; float: left;} 
+}
+@media (min-width: 992px) and (max-width: 1199px) { 
+  .fillter .md5 .input-group {width:24%; float: left;} 
+  .fillter .md6 .input-group {width:24%; float: left;} 
+  .fillter .md7 .input-group {width:24%; float: left;} 
+}
+@media (min-width: 1200px) {
+  .fillter .md5 .input-group {width:15.8%}
+  .fillter .md6 .input-group {width:15.8%}
+  .fillter .md7 .input-group {width:15.8%}
+}
+
+.dropdown-menu {font-size: 13px}
+.fillter .form-inline .inside-tooltip {
+    display: inline-block !important;
+}
+.fillter .form-inline .inside-tooltip i {top: 23px; font-size: 15px}
+.label-right .control-label {text-align: right;}
+.form-control-plaintext {
+    padding-top: .5rem;
+    padding-bottom: .5rem;
+    margin-bottom: 0;
+    line-height: 1.25;
+    border: solid transparent;
+    border-width: 1px 0;
+}
+.media {
+  display: flex;
+  align-items: flex-start;
+}
+
+.media-body {
+  flex: 1;
+}
+/*.btn:not(.btn-sm):not(.btn-hg):not(.btn-xs):not(.btn-lg):not(.bootstrap-touchspin-up):not(.bootstrap-touchspin-down){
+  height: auto;
+  margin-top: 0;
+}*/
+.account .account-wall-img{
+  text-align: center;
+}
+.account .account-wall-img img{
+  margin-bottom: 30px;
+    width: 200px;
+}
+.account .account-wall-img .append-icon img{
+  width: 60px;
+}
+.form-error{
+  display: none;
+}
+.form-alert .form-error{
+  display: block;
+  padding-left: 25px;
+}
+.form-alert .form-error p{
+  color: red;
+  font-size: 13px;
+  margin-bottom: 0
+}
+.form-alert .form-error p i{
+    left: -7px;
+    color: red;
+    top: -5px;
+}
+.nav-tabs > li.active {
+        background-color: #ac1515;
+    border-bottom: none;
+    color: #fff;
+}
+.nav-tabs > li.active > a:hover {
+        background-color: #ac1515;
+    border-bottom: none;
+    color: #fff;
+}
+.nav-tabs > li:hover > a:hover {
+        background-color: #ac1515;
+    border-bottom: none;
+    color: #fff;
+}
+ol.perms-level
+ol.perms-level > li{}
+ol.perms-level > li > ul{}
+ol.perms-level > li > ul > li{}
+ol.perms-level > li > ul > li > label{
+  font-weight: normal;
+  color: #1561ac
+}
+ol.perms-level > li > ul > li > ul{}
+ol.perms-level > li > ul > li > ul > li{}
+ol.perms-level > li > ul > li > ul > li > label{
+  font-weight: normal;
+  color: #00a2d9;
+}
+ol.perms-level > li > ul > li > ul > li > ul{}
+ol.perms-level > li > ul > li > ul > li > ul > li{}
+ol.perms-level > li > ul > li > ul > li > ul > li > label{
+  color: #333;
+  font-weight: normal;
+}
+.captcha{
+  position: relative;
+}
+.captcha img{
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+}
+.text-gray {color: #999}
+.btn-group-vertical .dropdown-toggle{
+  padding: 7px 12px;
+  border-bottom-right-radius: 4px !important;
+  border-bottom-left-radius: 4px !important; 
+}
+.btn-group-vertical .dropdown-menu{
+  right: 0 !important;
+  left: auto;
+}
+.pos-initial{
+  position: initial !important;
+}
+.tooltip{
+  
+  position: relative;
+}
+.tooltip .tooltip-arrow{}
+.tooltip .tooltip-inner{
+  width: 100px;
+  position: absolute;
+  left: -42px !important;
+  top: -10px !important;
+}
+
+
