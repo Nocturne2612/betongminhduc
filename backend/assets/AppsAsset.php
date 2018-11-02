@@ -33,6 +33,8 @@ class AppsAsset extends AssetBundle {
         'js/common.js',
         'js/firebase.js',
         'js/message.js',
+        'tinymce/tinymce.min.js',
+        'js/tinymce.js',
     ];
     public $jsOptions = [
         'position' => View::POS_HEAD

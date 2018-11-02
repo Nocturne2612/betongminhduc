@@ -38,20 +38,25 @@ $this->params['breadcrumbs'][] = $this->title;
                             ?>
                             <tr class="">
                                 <td align="center"><?= $no ?></td>
-                                <td><?= $data->id ?></td>
-                                <td><?= $data->name ?></td>
-                                <td><?= $data->url ?></td>
-                                <td><?= $data->parent_id ?></td>
+                                <td><?= $data['id'] ?></td>
+                                <td><?= $data['name'] ?></td>
+                                <td><?= $data['url'] ?></td>
+                                <td>
+                                    <?= !empty($data['parent_id']) ? \backend\models\model\BackendMenu::find()->where(['id' => $data['parent_id']])->one()->getAttribute('name') : 'Root' ?>
+                                </td>
                                 <td align="center">
-                                    <?php $status = \common\components\utils\StatusUtil::mappingstatus($data->status) ?>
+                                    <?php $status = \common\components\utils\StatusUtil::mappingstatus($data['status']) ?>
                                     <span class="<?= $status['class'] ?>"><?= $status['value'] ?></span>
                                 </td>
                                 <td align="right">
                                     <div class="dropdown otherOptions pull-right">
                                         <a href="#" class="dropdown-toggle btn btn-default btn-sm" data-toggle="dropdown" role="button" aria-expanded="false"><i class="icon-settings"></i> <span class="caret"></span></a>
                                         <ul class="dropdown-menu right" role="menu">
-                                            <li><a href="#unlockBank" data-toggle="modal"><i class="ti-unlock"></i> Khóa</a></li>
-                                            <li><a href="Installment_Bank_edit.html"><i class="ti-reload"></i> Chi tiết</a></li>
+                                            <?php foreach ($data['option'] as $option) { ?>
+                                                <li>
+                                                    <a href="<?= $option->action ?>" target="_blank"><i class="<?= $option->icon ?>"></i> <?= $option->name ?></a>
+                                                </li>
+                                            <?php } ?>
                                         </ul>
                                     </div>
                                 </td>

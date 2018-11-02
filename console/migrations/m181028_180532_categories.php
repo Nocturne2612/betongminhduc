@@ -22,7 +22,7 @@ class m181028_180532_categories extends Migration {
             'meta_title' => $this->string(),
             'meta_description' => $this->string(),
             'meta_keyword' => $this->string(),
-            'parent_id' => $this->integer()->notNull(),
+            'parent_id' => $this->integer(),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

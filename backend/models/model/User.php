@@ -17,21 +17,19 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  */
-class User extends \common\models\User
-{
+class User extends \common\models\User {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'user';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['username', 'auth_key', 'password_hash', 'email', 'created_at', 'updated_at'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
@@ -46,8 +44,7 @@ class User extends \common\models\User
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'username' => 'Username',
@@ -60,4 +57,5 @@ class User extends \common\models\User
             'updated_at' => 'Updated At',
         ];
     }
+
 }

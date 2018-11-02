@@ -13531,5 +13531,7 @@ input:checked + .slider:before {
   border-radius: 50%;
 }
 
-
+.form-inline .form-group{
+    width: 100%
+}
 

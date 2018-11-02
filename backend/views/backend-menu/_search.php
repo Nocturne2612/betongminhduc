@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use backend\models\model\BackendMenu;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\search\BackendMenuSearch */
@@ -32,7 +34,15 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="input-group">
         <label class="small">Menu cha</label>
-        <?= $form->field($model, 'parent_id')->textInput(['class' => 'form-control', 'type' => 'text'])->label(false); ?>
+        <?=
+        $form->field($model, 'parent_id')->dropDownList(
+                ArrayHelper::map(BackendMenu::find()->where(['status' => 1, 'parent_id' => null])->all(), 'id', 'name')
+                , [
+            'prompt' => 'Tất cả',
+            'class' => 'form-control',
+                ]
+        )->label(false);
+        ?>
     </div>
     <div class="input-group">
         <label class="small">Trạng thái</label>

@@ -27,15 +27,14 @@ class BackendMenuController extends SiteController {
         $searchModel = new BackendMenuSearch();
         $dataProvider = $searchModel->search($params);
         $datas = $dataProvider->query->all();
-        echo "<pre>";
-        print_r($datas);
-        die;
-        $totalCount = $dataProvider->getTotalCount();
+        foreach ($datas as $key => $value) {
+            $datas[$key] = $this->getIndexAction($value->getAttributes());
+        }
+//        $totalCount = $dataProvider->getTotalCount();
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'datas' => $datas,
-                    'totalCount' => $totalCount,
-                    'action' => $this->getIndexAction($datas),
+//                    'totalCount' => $totalCount,
         ]);
     }
 
@@ -47,7 +46,7 @@ class BackendMenuController extends SiteController {
      */
     public function actionView($id) {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'data' => $this->getViewAction($this->findModel($id)->getAttributes()),
         ]);
     }
 
@@ -58,11 +57,9 @@ class BackendMenuController extends SiteController {
      */
     public function actionCreate() {
         $model = new BackendMenu();
-
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         }
-
         return $this->render('create', [
                     'model' => $model,
         ]);
@@ -115,72 +112,39 @@ class BackendMenuController extends SiteController {
         throw new NotFoundHttpException('The requested page does not exist.');
     }
 
-    private function getIndexAction($datas, $result = []) {
-        foreach ($datas as $dat) {
-//        if ($datas['status'] == 1) {
-            $option = new Option();
-            $option->name = 'Chi tiết';
-            $option->action = Url::base(true) . '/backend-menu/view?id=' . $datas['id'];
-            $result[] = $option;
-//        }
-            if ($datas['status'] == 1) {
-                $option = new Option();
-                $option->name = 'Sửa';
-                $option->action = Url::base(true) . '/backend-menu/update?id=' . $datas['id'];
-                $result[] = $option;
-            }
-//        if ($datas['status'] == 1) {
-            $option = new Option();
-            $option->name = 'Xóa';
-            $option->action = Url::base(true) . '/backend-menu/delete?id=' . $datas['id'];
-            $result[] = $option;
-//        }
-            if ($datas['status'] == 1) {
-                $option = new Option();
-                $option->name = 'Khóa';
-                $option->action = Url::base(true) . '/backend-menu/lock';
-                $result[] = $option;
-            }
-            if ($datas['status'] == 0) {
-                $option = new Option();
-                $option->name = 'Mở khóa';
-                $option->action = Url::base(true) . '/backend-menu/unlock';
-                $result[] = $option;
-            }
-        }
-        return $result;
+    private function getIndexAction($data) {
+        //Xem chi tiết
+        $option = new Option();
+        $option->name = 'Chi tiết';
+        $option->action = Url::base(true) . '/backend-menu/view?id=' . $data['id'];
+        $data['option'][] = $option;
+        //Sửa
+        $option = new Option();
+        $option->name = 'Sửa';
+        $option->action = Url::base(true) . '/backend-menu/update?id=' . $data['id'];
+        $data['option'][] = $option;
+        //Xóa
+        $option = new Option();
+        $option->name = 'Xóa';
+        $option->action = Url::base(true) . '/backend-menu/delete?id=' . $data['id'];
+        $data['option'][] = $option;
+        return $data;
     }
 
-    private function getViewAction($datas, $result = []) {
-        if ($datas['status'] == 1) {
-            $option = new Option();
-            $option->name = 'Sửa';
-            $option->class = 'btn btn-primary';
-            $option->action = Url::base(true) . '/backend-menu/update?id=' . $datas['id'];
-            $result[] = $option;
-        }
-//        if ($datas['status'] == 1) {
+    private function getViewAction($data) {
+        //Sửa
+        $option = new Option();
+        $option->name = 'Sửa';
+        $option->class = 'btn btn-primary';
+        $option->action = Url::base(true) . '/backend-menu/update?id=' . $data['id'];
+        $data['option'][] = $option;
+        //xóa
         $option = new Option();
         $option->name = 'xóa';
         $option->class = 'btn btn-danger';
-        $option->action = Url::base(true) . '/backend-menu/delete?id=' . $datas['id'];
-        $result[] = $option;
-//        }
-        if ($datas['status'] == 1) {
-            $option = new Option();
-            $option->name = 'Khóa';
-            $option->class = 'btn btn-danger';
-            $option->action = Url::base(true) . '/backend-menu/lock';
-            $result[] = $option;
-        }
-        if ($datas['status'] == 0) {
-            $option = new Option();
-            $option->name = 'Mở khóa';
-            $option->class = 'btn btn-primary';
-            $option->action = Url::base(true) . '/backend-menu/unlock';
-            $result[] = $option;
-        }
-        return $result;
+        $option->action = Url::base(true) . '/backend-menu/delete?id=' . $data['id'];
+        $data['option'][] = $option;
+        return $data;
     }
 
 }
