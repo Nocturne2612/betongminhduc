@@ -4,10 +4,12 @@ namespace backend\controllers;
 
 use Yii;
 use backend\models\model\User;
+use backend\models\form\UserForm;
 use backend\models\search\UserSearch;
 use backend\controllers\SiteController;
 use yii\web\NotFoundHttpException;
-use yii\filters\VerbFilter;
+use common\models\Option;
+use yii\helpers\Url;
 
 /**
  * UserController implements the CRUD actions for User model.
@@ -19,13 +21,23 @@ class UserController extends SiteController {
      * @return mixed
      */
     public function actionIndex() {
+        $params = Yii::$app->request->queryParams;
+        if (isset($params['button']) && $params['button'] == 'reset') {
+            $this->redirect('index');
+        }
         $searchModel = new UserSearch();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = $searchModel->search($params);
         $datas = $dataProvider->query->all();
-        $totalCount = $dataProvider->getTotalCount();
+        if (!empty($datas)) {
+            foreach ($datas as $key => $value) {
+                $datas[$key] = $this->getIndexAction($value->getAttributes());
+            }
+        }
+//        $totalCount = $dataProvider->getTotalCount();
         return $this->render('index', [
                     'searchModel' => $searchModel,
-                    'dataProvider' => $dataProvider,
+                    'datas' => $datas,
+//                    'totalCount' => $totalCount,
         ]);
     }
 
@@ -37,7 +49,7 @@ class UserController extends SiteController {
      */
     public function actionView($id) {
         return $this->render('view', [
-                    'model' => $this->findModel($id),
+                    'data' => $this->getViewAction($this->findModel($id)->getAttributes()),
         ]);
     }
 
@@ -47,10 +59,11 @@ class UserController extends SiteController {
      * @return mixed
      */
     public function actionCreate() {
-        $model = new User();
-
-        if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+        $model = new UserForm();
+        if ($model->load(Yii::$app->request->post())) {
+            if ($user = $model->createUser()) {
+                return $this->redirect(['view', 'id' => $user->id]);
+            }
         }
 
         return $this->render('create', [
@@ -73,6 +86,19 @@ class UserController extends SiteController {
         }
 
         return $this->render('update', [
+                    'model' => $model,
+        ]);
+    }
+
+    public function actionResetPassword($id) {
+        $model = new \backend\models\form\ResetPasswordForm();
+        
+        if ($model->load(Yii::$app->request->post())) {
+            if ($model->resetPassword($id)) {
+                return $this->redirect(['view', 'id' => $id]);
+            }
+        }
+        return $this->render('reset-password', [
                     'model' => $model,
         ]);
     }
@@ -103,6 +129,52 @@ class UserController extends SiteController {
         }
 
         throw new NotFoundHttpException('The requested page does not exist.');
+    }
+
+    private function getIndexAction($data) {
+        //Xem chi tiết
+        $option = new Option();
+        $option->name = 'Chi tiết';
+        $option->action = Url::base(true) . '/user/view?id=' . $data['id'];
+        $data['option'][] = $option;
+        //Sửa
+        $option = new Option();
+        $option->name = 'Sửa';
+        $option->action = Url::base(true) . '/user/update?id=' . $data['id'];
+        $data['option'][] = $option;
+        //Xóa
+        $option = new Option();
+        $option->name = 'Reset mật khẩu';
+        $option->action = Url::base(true) . '/user/reset-password?id=' . $data['id'];
+        $data['option'][] = $option;
+        //Xóa
+        $option = new Option();
+        $option->name = 'Xóa';
+        $option->action = Url::base(true) . '/user/delete?id=' . $data['id'];
+        $data['option'][] = $option;
+        return $data;
+    }
+
+    private function getViewAction($data) {
+        //Sửa
+        $option = new Option();
+        $option->name = 'Sửa';
+        $option->class = 'btn btn-primary';
+        $option->action = Url::base(true) . '/user/update?id=' . $data['id'];
+        $data['option'][] = $option;
+        //Xóa
+        $option = new Option();
+        $option->name = 'Reset mật khẩu';
+        $option->class = 'btn btn-info';
+        $option->action = Url::base(true) . '/user/reset-password?id=' . $data['id'];
+        $data['option'][] = $option;
+        //xóa
+        $option = new Option();
+        $option->name = 'xóa';
+        $option->class = 'btn btn-danger';
+        $option->action = Url::base(true) . '/user/delete?id=' . $data['id'];
+        $data['option'][] = $option;
+        return $data;
     }
 
 }

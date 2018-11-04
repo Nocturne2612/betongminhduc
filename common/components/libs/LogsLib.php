@@ -8,7 +8,7 @@ class LogsLib {
 
     public static function log($msg) {
         try {
-            $_dir_log = Yii::getAlias('@apps/runtime/logs/system.log');
+            $_dir_log = Yii::getAlias('@backend/runtime/logs/system.log');
             if (!file_exists($_dir_log)) {
                 fopen($_dir_log, "w") or die("Unable to open file!");
             }
@@ -29,7 +29,7 @@ class LogsLib {
      */
     private static function rollingLog() {
         $ext = date("Y-m-d-H-i-s");
-        $path = Yii::getAlias('@apps/runtime/logs/');
+        $path = Yii::getAlias('@backend/runtime/logs/');
         $from = "{$path}system.log";
         $to = "{$path}system-{$ext}.log";
         if (!file_exists($to)) {

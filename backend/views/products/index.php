@@ -15,7 +15,7 @@ $this->params['breadcrumbs'][] = $this->title;
 </div>
 <div class="row">
     <div class="col-md-12">
-        <?php echo $this->render('_search', ['model' => $searchModel]); ?>
+        <?php echo $this->render('_search', ['model' => $searchModel, 'cateParent' => $cateParent]); ?>
         <div class="panel">
             <div class="panel-content p-0">
                 <table class="table table-striped table-responsive">
@@ -24,6 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <th style="text-align: center;">STT</th>
                             <th>ID</th>
                             <th>Tên sản phẩm</th>
+                            <th>Ảnh đại diện</th>
                             <th>Mô tả</th>
                             <th>Danh mục</th>
                             <th>Người đăng</th>
@@ -42,9 +43,14 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td align="center"><?= $no ?></td>
                                 <td><?= $data['id'] ?></td>
                                 <td><?= $data['title'] ?></td>
-                                <td><?= $data['description'] ?></td>
-                                <td><?= $data['cate_id'] ?></td>
-                                <td><?= $data['user_id'] ?></td>
+                                <td><img scr="<?= \common\components\utils\UrlComponent::getImage('product-' . $data['id'] . '.jpg') ?>" alt="<?= $data['title'] ?>"/></td>
+                                <td><?= strlen($data['description']) > 150 ? substr($data['description'], 0, 150) . '...' : $data['description'] ?></td>
+                                <td>
+                                    <?= !empty($data['cate_id']) ? backend\models\model\Categories::find()->where(['id' => $data['cate_id']])->one()->getAttribute('title') : 'Không có danh mục' ?>
+                                </td>
+                                <td>
+                                    <?= !empty($data['user_id']) ? \common\models\User::find()->where(['id' => $data['user_id']])->one()->getAttribute('username') : 'không rõ' ?>
+                                </td>
                                 <td align="center">
                                     <?php $status = \common\components\utils\StatusUtil::mappingstatus($data['status']) ?>
                                     <span class="<?= $status['class'] ?>"><?= $status['value'] ?></span>

@@ -9,6 +9,7 @@ use backend\controllers\SiteController;
 use yii\web\NotFoundHttpException;
 use common\models\Option;
 use yii\helpers\Url;
+use yii\web\UploadedFile;
 
 /**
  * ProductsController implements the CRUD actions for Products model.
@@ -34,6 +35,7 @@ class ProductsController extends SiteController {
         return $this->render('index', [
                     'searchModel' => $searchModel,
                     'datas' => $datas,
+                    'cateParent' => $searchModel->getCateParent(),
 //                    'totalCount' => $totalCount,
         ]);
     }
@@ -59,11 +61,16 @@ class ProductsController extends SiteController {
         $model = new Products();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->files = UploadedFile::getInstance($model, 'files');
+            if ($model->files) {
+                $model->files->saveAs('../../images/' . 'product-' . $model->id . '.jpg', true);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('create', [
                     'model' => $model,
+                    'cateParent' => $model->getCateParent(),
         ]);
     }
 
@@ -78,11 +85,16 @@ class ProductsController extends SiteController {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            $model->files = UploadedFile::getInstance($model, 'files');
+            if ($model->files) {
+                $model->files->saveAs('../../images/' . 'product-' . $model->id . '.jpg', true);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
                     'model' => $model,
+                    'cateParent' => $model->getCateParent(),
         ]);
     }
 

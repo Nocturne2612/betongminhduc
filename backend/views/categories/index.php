@@ -24,7 +24,6 @@ $this->params['breadcrumbs'][] = $this->title;
                             <th style="text-align: center;">STT</th>
                             <th>ID</th>
                             <th>Tên danh mục</th>
-                            <th>Mô tả</th>
                             <th>Danh mục cha</th>
                             <th style="text-align: center;">Trạng thái</th>
                             <th style="text-align: right;">
@@ -40,10 +39,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             <tr class="">
                                 <td align="center"><?= $no ?></td>
                                 <td><?= $data['id'] ?></td>
-                                <td><?= $data['title'] ?></td>
-                                <td><?= strlen($data['description']) > 150 ? substr($data['description'], 0, 150) . '...' : $data['description'] ?></td>
-                                <td>
-                                    <?= !empty($data['parent_id']) ? Categories::find()->where(['id' => '1'])->one()->getAttribute('title') : 'Root' ?>
+                                <td><?= $data['title'] ?></td><td>
+                                    <?= !empty($data['parent_id']) ? Categories::find()->where(['id' => $data['parent_id']])->one()->getAttribute('title') : 'Root' ?>
                                 </td>
                                 <td align="center">
                                     <?php $status = \common\components\utils\StatusUtil::mappingstatus($data['status']) ?>

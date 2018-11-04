@@ -22,6 +22,7 @@ use Yii;
  */
 class Products extends \common\models\User {
 
+    public $files;
     /**
      * @inheritdoc
      */
@@ -38,6 +39,7 @@ class Products extends \common\models\User {
             [['description', 'content'], 'string'],
             [['cate_id', 'user_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['title', 'meta_title', 'meta_description', 'meta_keyword'], 'string', 'max' => 255],
+            [['files'], 'file', 'extensions' => 'jpg,png'],
         ];
     }
 
@@ -59,6 +61,25 @@ class Products extends \common\models\User {
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
+    }
+
+    public $datas;
+
+    public function getCateParent($parent = null, $level = '') {
+        $result = Categories::find()->asArray()->where(['status' => 1, 'parent_id' => $parent])->all();
+
+        $level .= '|--';
+        if (empty($result)) {
+            return $this->datas;
+        }
+        foreach ($result as $key => $value) {
+            if ($parent == null) {
+                $level = '';
+            }
+            $this->datas[$value['id']] = $level . $value['title'];
+            $this->getCateParent($value['id'], $level);
+        }
+        return $this->datas;
     }
 
 }

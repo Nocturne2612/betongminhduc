@@ -2,8 +2,6 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use yii\helpers\ArrayHelper;
-use backend\models\model\Categories;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\search\ProductsSearch */
@@ -32,7 +30,7 @@ use backend\models\model\Categories;
         <label class="small">Danh mục</label>
         <?=
         $form->field($model, 'cate_id')->dropDownList(
-                ArrayHelper::map(Categories::find()->where(['status' => 1])->all(), 'id', 'title')
+                !empty($cateParent) ? $cateParent : []
                 , [
             'prompt' => 'Tất cả',
             'class' => 'form-control',

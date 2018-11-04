@@ -2,14 +2,12 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
-use backend\models\model\Categories;
-use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model backend\models\model\Products */
 /* @var $form yii\widgets\ActiveForm */
 ?>
-<?php $form = ActiveForm::begin(); ?>
+<?php $form = ActiveForm::begin(['options' => ['enctype' => 'multipart/form-data']]); ?>
 <div class="row">
     <div class="col-md-12">
         <div class="panel">
@@ -22,14 +20,20 @@ use yii\helpers\ArrayHelper;
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-3 control-label">Ảnh đại diện</label>
+                        <div class="col-sm-5 col-lg-3">
+                            <?= $form->field($model, 'files')->fileInput(['class' => 'form-control form-white'])->label(false) ?> 
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-3 control-label">Danh mục</label>
                         <div class="col-sm-5 col-lg-3">
                             <?=
                             $form->field($model, 'cate_id')->dropDownList(
-                                    ArrayHelper::map(Categories::find()->where(['status' => 1])->all(), 'id', 'title')
+                                    !empty($cateParent) ? $cateParent : []
                                     , [
                                 'prompt' => 'Tất cả',
-                                'class' => 'form-control form-white col-md-9',
+                                'class' => 'form-control form-white',
                                     ]
                             )->label(false);
                             ?>
@@ -85,7 +89,7 @@ use yii\helpers\ArrayHelper;
                     <?=
                             $form->field($model, 'user_id')
                             ->hiddenInput([
-                                'value' => Yii::$app->user->id
+                                'value' => !empty($model->user_id) ? $model->user_id : Yii::$app->user->id
                             ])
                             ->label(false)
                     ?> 

@@ -5,7 +5,7 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\model\Products */
 
-$this->title = $data['title'];
+$this->title = 'Chi tiết sản phẩm';
 $this->params['breadcrumbs'][] = ['label' => 'Products', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -16,7 +16,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-header border-bottom bg-gray">
-                <h3 class="text-primary"><?= Html::encode($this->title) ?></h3>
+                <h3 class="text-primary"><?= $data['title'] ?></h3>
             </div>
             <div class="panel-content p-0">
                 <div class="box box-solid ">
@@ -30,6 +30,11 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <tr>
                                     <td>Tên sản phẩm:</td>
                                     <td><strong><?= $data['title'] ?></strong></td>
+                                </tr>
+                                <tr>
+                                <tr>
+                                    <td>Ảnh đại diện:</td>
+                                    <td><img scr="<?= \common\components\utils\UrlComponent::getImage('product-' . $data['id'] . '.jpg') ?>" alt="<?= $data['title'] ?>"/></td>
                                 </tr>
                                 <tr>
                                     <td>Tên danh mục:</td>

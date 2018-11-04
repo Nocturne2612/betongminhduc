@@ -21,6 +21,8 @@ use Yii;
  */
 class Categories extends \common\models\User {
 
+    public $files;
+
     /**
      * @inheritdoc
      */
@@ -37,6 +39,7 @@ class Categories extends \common\models\User {
             [['description', 'content'], 'string'],
             [['parent_id', 'status', 'created_at', 'updated_at'], 'integer'],
             [['title', 'meta_title', 'meta_description', 'meta_keyword'], 'string', 'max' => 255],
+            [['files'], 'file', 'extensions' => 'jpg,png'],
         ];
     }
 

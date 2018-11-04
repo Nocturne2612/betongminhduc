@@ -8,30 +8,51 @@ use yii\widgets\ActiveForm;
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="user-form">
-
-    <?php $form = ActiveForm::begin(); ?>
-
-    <?= $form->field($model, 'username')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'auth_key')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'password_hash')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'password_reset_token')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'email')->textInput(['maxlength' => true]) ?>
-
-    <?= $form->field($model, 'status')->textInput() ?>
-
-    <?= $form->field($model, 'created_at')->textInput() ?>
-
-    <?= $form->field($model, 'updated_at')->textInput() ?>
-
-    <div class="form-group">
-        <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>
+<?php $form = ActiveForm::begin(); ?>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Tên tài khoản</label>
+                        <div class="col-sm-5 col-lg-3">
+                            <?= $form->field($model, 'username')->textInput(['class' => 'form-control form-white', 'readonly' => true])->label(false) ?> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Email</label>
+                        <div class="col-sm-5 col-lg-3">
+                            <?= $form->field($model, 'email')->textInput(['class' => 'form-control form-white'])->label(false) ?> 
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-3 control-label">Trạng thái</label>
+                        <div class="col-sm-5 col-lg-3">
+                            <?=
+                            $form->field($model, 'status')->dropDownList(
+                                    [
+                                '1' => 'Đang hoạt động',
+                                '0' => 'Đang khóa',
+                                    ], [
+                                'class' => 'form-control form-white col-md-6',
+                                    ]
+                            )->label(false);
+                            ?>
+                        </div>
+                    </div>
+                    <?= $form->field($model, 'created_at')->hiddenInput(['value' => !empty($model->created_at) ? $model->created_at : time()])->label(false) ?> 
+                    <?= $form->field($model, 'updated_at')->hiddenInput(['value' => time()])->label(false) ?> 
+                    <div class="form-group m-b-0">
+                        <label class="col-sm-3 control-label"> </label>
+                        <div class="col-sm-8 col-lg-5">
+                            <!--<a class="btn btn-white" href="#" aria-expanded="true">Thoát</a>-->
+                            <?= Html::submitButton('Lưu', ['class' => 'btn btn-success']) ?>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <?php ActiveForm::end(); ?>
-
 </div>
+<?php ActiveForm::end(); ?>

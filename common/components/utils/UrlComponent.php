@@ -20,11 +20,11 @@ class UrlComponent {
     }
 
     //Images
-    public static function getImage($fileName, $authToken) {
-        if (empty($fileName)) {
-            return Url::base(true) . "/images/no-avatar.png";
+    public static function getImage($fileName) {
+        if (!file_exists("../../images/" . $fileName)) {
+            return "/images/no-image.png";
         }
-        return \Yii::$app->params['apiUrl']['media'] . "/media/files/{$fileName}?authToken={$authToken}";
+        return "../../images/" . $fileName;
     }
 
 }

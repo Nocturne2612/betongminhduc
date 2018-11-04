@@ -17,7 +17,7 @@ class m181028_181038_images extends Migration {
         $this->createTable('{{%images}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
-            'decrition' => $this->string(),
+            'decription' => $this->string(),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),
