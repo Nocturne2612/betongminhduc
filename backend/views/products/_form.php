@@ -70,6 +70,21 @@ use yii\widgets\ActiveForm;
                         </div>
                     </div>
                     <div class="form-group">
+                        <label class="col-sm-3 control-label">Sản phẩm nổi bật</label>
+                        <div class="col-sm-5 col-lg-3">
+                            <?=
+                            $form->field($model, 'attention')->dropDownList(
+                                    [
+                                '1' => 'Nổi bật',
+                                '0' => 'Không',
+                                    ], [
+                                'class' => 'form-control form-white',
+                                    ]
+                            )->label(false);
+                            ?>
+                        </div>
+                    </div>
+                    <div class="form-group">
                         <label class="col-sm-3 control-label">Trạng thái</label>
                         <div class="col-sm-5 col-lg-3">
                             <?=
@@ -78,7 +93,7 @@ use yii\widgets\ActiveForm;
                                 '1' => 'Đang hoạt động',
                                 '0' => 'Đang khóa',
                                     ], [
-                                'class' => 'form-control form-white col-md-6',
+                                'class' => 'form-control form-white',
                                     ]
                             )->label(false);
                             ?>

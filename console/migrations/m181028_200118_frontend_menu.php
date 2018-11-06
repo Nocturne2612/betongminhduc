@@ -18,7 +18,7 @@ class m181028_200118_frontend_menu extends Migration {
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
             'url' => $this->string()->notNull(),
-            'parent_id' => $this->integer()->notNull()->defaultValue(0),
+            'parent_id' => $this->integer(),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

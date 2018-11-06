@@ -16,33 +16,33 @@ use Yii;
  * @property int $created_at
  * @property int $updated_at
  */
-class Banner extends \common\models\User
-{
+class Banner extends \common\models\User {
+
+    public $files;
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'banner';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['title', 'link', 'created_at', 'updated_at'], 'required'],
             [['position', 'status', 'created_at', 'updated_at'], 'integer'],
             [['title', 'link', 'description'], 'string', 'max' => 255],
+            [['files'], 'file', 'extensions' => 'jpg,png'],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'title' => 'Title',
@@ -54,4 +54,5 @@ class Banner extends \common\models\User
             'updated_at' => 'Updated At',
         ];
     }
+
 }

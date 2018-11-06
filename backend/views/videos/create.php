@@ -6,16 +6,11 @@ use yii\helpers\Html;
 /* @var $this yii\web\View */
 /* @var $model backend\models\model\Videos */
 
-$this->title = 'Create Videos';
+$this->title = 'Tạo mới video';
 $this->params['breadcrumbs'][] = ['label' => 'Videos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="videos-create">
-
-    <h1><?= Html::encode($this->title) ?></h1>
-
-    <?= $this->render('_form', [
-        'model' => $model,
-    ]) ?>
-
+<div class="header">
+    <h2><?= Html::encode($this->title) ?></h2>
 </div>
+<?= $this->render('_form', ['model' => $model]) ?>

@@ -33,9 +33,9 @@ return [
                 ],
             ],
         ],
-        'errorHandler' => [
-            'errorAction' => 'site/error',
-        ],
+//        'errorHandler' => [
+//            'errorAction' => 'site/error',
+//        ],
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
@@ -46,6 +46,7 @@ return [
                 '<controller:\w+>/<action:\w+>/<id:[0-9]+>' => '<controller>/<action>'
             ]
         ],
+       
     ],
     'params' => $params,
 ];

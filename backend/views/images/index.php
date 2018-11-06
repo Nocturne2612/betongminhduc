@@ -7,7 +7,7 @@ use yii\widgets\ListView;
 /* @var $searchModel backend\models\search\ImagesSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Images';
+$this->title = 'Hình ảnh';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="header">
@@ -41,7 +41,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td align="center"><?= $no ?></td>
                                 <td><?= $data['id'] ?></td>
                                 <td><?= $data['name'] ?></td>
-                                <td><img scr="<?= \common\components\utils\UrlComponent::getImage('images-' . $data['id'] . '.jpg') ?>" alt="<?= $data['title'] ?>"/></td>
+                                <td><img src="<?= \common\components\utils\UrlComponent::getImage('images-' . $data['id'] . '.jpg') ?>" alt="<?= $data['name'] ?>"/></td>
                                 <td><?= strlen($data['description']) > 150 ? substr($data['description'], 0, 150) . '...' : $data['description'] ?></td>
                                 <td align="center">
                                     <?php $status = \common\components\utils\StatusUtil::mappingstatus($data['status']) ?>
@@ -53,7 +53,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <ul class="dropdown-menu right" role="menu">
                                             <?php foreach ($data['option'] as $option) { ?>
                                                 <li>
-                                                    <a href="<?= $option->action ?>" target="_blank"><i class="<?= $option->icon ?>"></i> <?= $option->name ?></a>
+                                                    <a href="<?= $option->action ?>"><i class="<?= $option->icon ?>"></i> <?= $option->name ?></a>
                                                 </li>
                                             <?php } ?>
                                         </ul>

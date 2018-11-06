@@ -39,6 +39,20 @@ use yii\widgets\ActiveForm;
         ?>
     </div>
     <div class="input-group">
+        <label class="small">Sản phẩm nổi bật</label>
+        <?=
+        $form->field($model, 'status')->dropDownList(
+                [
+            '1' => 'Nổi bật',
+            '0' => 'Không',
+                ], [
+            'prompt' => 'Tất cả',
+            'class' => 'form-control',
+                ]
+        )->label(false);
+        ?>	
+    </div>
+    <div class="input-group">
         <label class="small">Trạng thái</label>
         <?=
         $form->field($model, 'status')->dropDownList(

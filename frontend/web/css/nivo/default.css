@@ -1,0 +1,85 @@
+/*
+Skin Name: Nivo Slider Default Theme
+Skin URI: http://nivo.dev7studios.com
+Skin Type: flexible
+Description: The default skin for the Nivo Slider.
+Version: 1.2
+Author: Gilbert Pellegrom
+Author URI: http://dev7studios.com
+*/
+
+.theme-default .nivoSlider {
+	position:relative;
+	background: url(loading.gif) no-repeat 50% 50%;
+    margin:0px 0 0 0;
+}
+.theme-default .nivoSlider img {
+	position:absolute;
+	top:0px;
+	left:0px;
+	display:none;	
+	width:100%!important;
+}
+.theme-default .nivoSlider a {
+	border:0;
+	display:block;
+}
+
+.theme-default .nivo-controlNav {
+	text-align: center;
+	bottom:0px;
+	right:40px;
+	position:absolute;
+	z-index:1000;
+}
+.theme-default .nivo-controlNav a {
+	display:inline-block;
+	width:10px;
+	height:10px;
+	text-indent:-9999px;
+	border:0;
+	margin: 0 0 0 15px;
+	background:url('../../images/ic_nav.jpg') no-repeat center center;
+}
+.theme-default .nivo-controlNav a.active {
+	background:url('../../images/ic_nav_active.jpg') no-repeat center center;
+}
+
+.theme-default .nivo-directionNav a {
+	display:block;
+	width:24px;
+	height:24px;
+	
+	text-indent:-9999px;
+	border:0;
+}
+.theme-default a.nivo-nextNav {
+	background-position:-25px 0;
+	right:15px;
+}
+.theme-default a.nivo-prevNav {
+	left:15px;
+}
+
+
+.theme-default .nivo-caption a {
+    color:#fff;
+}
+.theme-default .nivo-caption a:hover {
+    color:#fff;
+}
+
+.theme-default .nivo-controlNav.nivo-thumbs-enabled {
+	width: 100%;
+}
+.theme-default .nivo-controlNav.nivo-thumbs-enabled a {
+	width: auto;
+	height: auto;
+	background: none;
+	margin-bottom: 5px;
+}
+.theme-default .nivo-controlNav.nivo-thumbs-enabled img {
+	display: block;
+	width: 120px;
+	height: auto;
+}

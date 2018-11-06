@@ -28,6 +28,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <th>Mô tả</th>
                             <th>Danh mục</th>
                             <th>Người đăng</th>
+                            <th>Sản phẩm nổi bật</th>
                             <th style="text-align: center;">Trạng thái</th>
                             <th style="text-align: right;">
                                 <?= Html::a('Tạo mới', ['create'], ['class' => 'btn btn-success btn-xs']) ?>
@@ -43,13 +44,20 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td align="center"><?= $no ?></td>
                                 <td><?= $data['id'] ?></td>
                                 <td><?= $data['title'] ?></td>
-                                <td><img scr="<?= \common\components\utils\UrlComponent::getImage('product-' . $data['id'] . '.jpg') ?>" alt="<?= $data['title'] ?>"/></td>
+                                <td><img src="<?= \common\components\utils\UrlComponent::getImage('product/product-' . $data['id'] . '.jpg') ?>" alt="<?= $data['title'] ?>" style="max-width:150px; max-height:  100px" /></td>
                                 <td><?= strlen($data['description']) > 150 ? substr($data['description'], 0, 150) . '...' : $data['description'] ?></td>
                                 <td>
                                     <?= !empty($data['cate_id']) ? backend\models\model\Categories::find()->where(['id' => $data['cate_id']])->one()->getAttribute('title') : 'Không có danh mục' ?>
                                 </td>
                                 <td>
                                     <?= !empty($data['user_id']) ? \common\models\User::find()->where(['id' => $data['user_id']])->one()->getAttribute('username') : 'không rõ' ?>
+                                </td>
+                                <td align="center">
+                                    <?php if ($data['attention'] == 1) { ?>
+                                        <span class="badge bg-green">Nổi bật</span>
+                                    <?php } else { ?>
+                                        <span class="badge bg-yellow">Không</span>
+                                    <?php } ?>
                                 </td>
                                 <td align="center">
                                     <?php $status = \common\components\utils\StatusUtil::mappingstatus($data['status']) ?>
@@ -61,7 +69,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <ul class="dropdown-menu right" role="menu">
                                             <?php foreach ($data['option'] as $option) { ?>
                                                 <li>
-                                                    <a href="<?= $option->action ?>" target="_blank"><i class="<?= $option->icon ?>"></i> <?= $option->name ?></a>
+                                                    <a href="<?= $option->action ?>"><i class="<?= $option->icon ?>"></i> <?= $option->name ?></a>
                                                 </li>
                                             <?php } ?>
                                         </ul>

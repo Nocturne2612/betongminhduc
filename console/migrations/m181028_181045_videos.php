@@ -17,7 +17,7 @@ class m181028_181045_videos extends Migration {
         $this->createTable('{{%videos}}', [
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull(),
-            'decrition' => $this->string(),
+            'code' => $this->string()->notNull(),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

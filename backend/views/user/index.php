@@ -50,7 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <ul class="dropdown-menu right" role="menu">
                                             <?php foreach ($data['option'] as $option) { ?>
                                                 <li>
-                                                    <a href="<?= $option->action ?>" target="_blank"><i class="<?= $option->icon ?>"></i> <?= $option->name ?></a>
+                                                    <a href="<?= $option->action ?>"><i class="<?= $option->icon ?>"></i> <?= $option->name ?></a>
                                                 </li>
                                             <?php } ?>
                                         </ul>

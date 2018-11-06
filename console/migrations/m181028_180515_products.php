@@ -25,6 +25,7 @@ class m181028_180515_products extends Migration
             'meta_keyword' => $this->string(),
             'cate_id' => $this->integer()->notNull(),
             'user_id' => $this->integer()->notNull(),
+            'attention' => $this->smallInteger()->notNull()->defaultValue(0),
             'status' => $this->smallInteger()->notNull()->defaultValue(1),
             'created_at' => $this->integer()->notNull(),
             'updated_at' => $this->integer()->notNull(),

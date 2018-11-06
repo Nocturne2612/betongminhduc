@@ -9,45 +9,44 @@ use Yii;
  *
  * @property int $id
  * @property string $name
- * @property string $decrition
+ * @property string $code
  * @property int $status
  * @property int $created_at
  * @property int $updated_at
  */
-class Videos extends \common\models\User
-{
+class Videos extends \common\models\User {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'videos';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['name', 'created_at', 'updated_at'], 'required'],
+            [['name', 'code', 'created_at', 'updated_at'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
-            [['name', 'decrition'], 'string', 'max' => 255],
+            [['name', 'code'], 'string', 'max' => 255],
         ];
     }
 
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'code' => 'Code',
             'decrition' => 'Decrition',
             'status' => 'Status',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
         ];
     }
+
 }

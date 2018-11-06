@@ -1,17 +1,21 @@
 tinymce.init({
-    selector: 'textarea',
-    height: 150,
-    wight: '',
-    theme: 'modern',
-    plugins: 'print preview fullpage paste searchreplace autolink directionality bbcode visualblocks visualchars fullscreen image link media template codesample table charmap hr pagebreak nonbreaking anchor toc insertdatetime advlist lists textcolor wordcount spellchecker imagetools contextmenu colorpicker textpattern help',
-    toolbar1: 'formatselect | bold italic strikethrough forecolor backcolor | link | alignleft aligncenter alignright alignjustify  | numlist bullist outdent indent  | removeformat',
-    image_advtab: true,
-    templates: [
-        {title: 'Test template 1', content: 'Test 1'},
-        {title: 'Test template 2', content: 'Test 2'}
+    selector: 'textarea',theme: "modern",
+    height: "",
+    width:"",
+    plugins: [
+      "advlist autolink lists link image charmap print preview hr anchor pagebreak",
+      "searchreplace wordcount visualblocks visualchars fullscreen",
+      "insertdatetime media nonbreaking save table contextmenu directionality",
+      "emoticons template paste textcolor colorpicker textpattern imagetools code fullscreen"
     ],
-    content_css: [
-        '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
-        '//www.tinymce.com/css/codepen.min.css'
-    ]
+    toolbar1: "undo redo bold italic underline strikethrough cut copy paste| alignleft aligncenter alignright alignjustify bullist numlist outdent indent blockquote searchreplace | styleselect formatselect fontselect fontsizeselect ",
+    toolbar2: "table | hr removeformat | subscript superscript | charmap emoticons ltr rtl | spellchecker | visualchars visualblocks nonbreaking template pagebreak restoredraft | link unlink anchor image media | insertdatetime preview | forecolor backcolor print fullscreen code ",
+    image_advtab: true,
+    menubar: false,
+    toolbar_items_size: 'small',
+    relative_urls: true,
+    remove_script_host : true,
+    external_filemanager_path:host[0]+"file/",
+    filemanager_title:"Quan ly file" ,
+    external_plugins: { "filemanager" : host[0]+"file/plugin.min.js"},
 });

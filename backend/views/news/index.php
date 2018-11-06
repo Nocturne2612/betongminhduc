@@ -43,7 +43,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <td align="center"><?= $no ?></td>
                                 <td><?= $data['id'] ?></td>
                                 <td><?= $data['title'] ?></td>
-                                <td><img scr="<?= \common\components\utils\UrlComponent::getImage('news-' . $data['id'] . '.jpg') ?>" alt="<?= $data['title'] ?>"/></td>
+                                <td><img src="<?= \common\components\utils\UrlComponent::getImage('product/product-' . $data['id'] . '.jpg') ?>" alt="<?= $data['title'] ?>" style="max-width:150px; max-height:  100px" /></td>
                                 <td><?= strlen($data['description']) > 150 ? substr($data['description'], 0, 150) . '...' : $data['description'] ?></td>
                                 <td>
                                     <?= !empty($data['cate_id']) ? backend\models\model\NewsCategories::find()->where(['id' => $data['cate_id']])->one()->getAttribute('title') : 'Không có danh mục' ?>
@@ -61,7 +61,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                         <ul class="dropdown-menu right" role="menu">
                                             <?php foreach ($data['option'] as $option) { ?>
                                                 <li>
-                                                    <a href="<?= $option->action ?>" target="_blank"><i class="<?= $option->icon ?>"></i> <?= $option->name ?></a>
+                                                    <a href="<?= $option->action ?>"><i class="<?= $option->icon ?>"></i> <?= $option->name ?></a>
                                                 </li>
                                             <?php } ?>
                                         </ul>

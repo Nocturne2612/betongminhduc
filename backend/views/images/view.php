@@ -35,7 +35,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <tr>
                                 <tr>
                                     <td>Ảnh đại diện:</td>
-                                    <td><img scr="<?= \common\components\utils\UrlComponent::getImage('product-' . $data['id'] . '.jpg') ?>" alt="<?= $data['name'] ?>"/></td>
+                                    <td><img src="<?= \common\components\utils\UrlComponent::getImage('product-' . $data['id'] . '.jpg') ?>" alt="<?= $data['name'] ?>"/></td>
                                 </tr>
                                 <tr>
                                     <td>Mô tả:</td>

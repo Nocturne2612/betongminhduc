@@ -10,15 +10,14 @@ use backend\models\model\Products;
 /**
  * ProductsSearch represents the model behind the search form of `backend\models\model\Products`.
  */
-class ProductsSearch extends Products
-{
+class ProductsSearch extends Products {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
-            [['id', 'cate_id', 'user_id', 'status', 'created_at', 'updated_at'], 'integer'],
+            [['id', 'cate_id', 'user_id', 'attention', 'status', 'created_at', 'updated_at'], 'integer'],
             [['title', 'description', 'content', 'meta_title', 'meta_description', 'meta_keyword'], 'safe'],
         ];
     }
@@ -26,8 +25,7 @@ class ProductsSearch extends Products
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -39,8 +37,7 @@ class ProductsSearch extends Products
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Products::find();
 
         // add conditions that should always apply here
@@ -62,18 +59,20 @@ class ProductsSearch extends Products
             'id' => $this->id,
             'cate_id' => $this->cate_id,
             'user_id' => $this->user_id,
+            'attention' => $this->attention,
             'status' => $this->status,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
 
         $query->andFilterWhere(['like', 'title', $this->title])
-            ->andFilterWhere(['like', 'description', $this->description])
-            ->andFilterWhere(['like', 'content', $this->content])
-            ->andFilterWhere(['like', 'meta_title', $this->meta_title])
-            ->andFilterWhere(['like', 'meta_description', $this->meta_description])
-            ->andFilterWhere(['like', 'meta_keyword', $this->meta_keyword]);
+                ->andFilterWhere(['like', 'description', $this->description])
+                ->andFilterWhere(['like', 'content', $this->content])
+                ->andFilterWhere(['like', 'meta_title', $this->meta_title])
+                ->andFilterWhere(['like', 'meta_description', $this->meta_description])
+                ->andFilterWhere(['like', 'meta_keyword', $this->meta_keyword]);
 
         return $dataProvider;
     }
+
 }

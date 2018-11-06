@@ -17,7 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
     <div class="col-md-12">
         <div class="panel">
             <div class="panel-header border-bottom bg-gray">
-                <h3 class="text-primary"><?= Html::encode($this->title) ?></h3>
+                <h3 class="text-primary"><?= $data['name'] ?></h3>
             </div>
             <div class="panel-content p-0">
                 <div class="box box-solid ">
